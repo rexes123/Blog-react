@@ -41,7 +41,6 @@ export default function Edit() {
   }, [id]);
 
   const handleSave = async () => {
-    // console.log("Save");
     try {
       const response = await fetch(
         `https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/post/${id}`,
@@ -68,13 +67,6 @@ export default function Edit() {
 
   const handleOnChgTitle = (e) => {
     setEditItem({
-      //Copies existing properties into new object
-      // ...editItem is
-      // {
-      // title: "old title",
-      // content: "old content",
-      // author: "old author"
-      // }
       ...editItem,
       title: e.target.value,
     });

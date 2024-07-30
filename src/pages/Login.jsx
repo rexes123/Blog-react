@@ -42,10 +42,14 @@ export default function Login() {
         console.log(data.token);
         setToken(data.token);
         console.log(token);
-      }
+      } 
     } catch (error) {
       console.error(error.message);
     }
+  };
+
+  const navToSignUp = () => {
+    navigate("/signup");
   };
 
   return (
@@ -72,8 +76,16 @@ export default function Login() {
           />
         </Form.Group>
 
-        <Button variant="outline-primary" type="submit">
+        <Button
+          variant="outline-primary"
+          type="submit"
+          style={{ marginRight: "10px" }}
+        >
           Submit
+        </Button>
+
+        <Button variant="outline-secondary" onClick={navToSignUp}>
+          Sign Up
         </Button>
       </Form>
     </div>

@@ -1,24 +1,51 @@
-import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Alert, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [existingEmails, setExistingEmails] = useState([]);
+
+  console.log(existingEmails);
+
+  const navigate = useNavigate();
+  const navToLogin = () => {
+    navigate("/login");
+  };
 
   console.log(password);
   console.log(confirmPassword);
 
-  // const handleOnChangeEmail = (event) => {
-  //   setEmail(event.target.value);
-  // }; similar to {(event)=> setEmail(even.target.value)})}
+  useEffect(() => {
+    const checkEmail = async () => {
+      try {
+        const response = await fetch(
+          "https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/signup",
+        );
+        const data = await response.json();
+        const email = data.map((usersAccount) => usersAccount.email);
+        setExistingEmails(email);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    checkEmail();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (existingEmails.includes(email)) {
+      alert("Email is registered, Please try another email");
+    }
+
     if (password !== confirmPassword) {
       alert("Password not match");
-      return; //Return further execution if password not match
+      return;
     }
 
     const obj = {
@@ -37,10 +64,17 @@ export default function SignUp() {
           body: JSON.stringify(obj),
         },
       );
+
+      if (!response.ok) {
+        throw new Error("Sign-up failed");
+      }
+
       const data = await response.json();
       console.log(data);
+      alert("Sign up successful!");
     } catch (error) {
       console.error(error.message);
+      // alert("Invalid email or password");
     }
   };
 
@@ -78,8 +112,16 @@ export default function SignUp() {
           />
         </Form.Group>
 
-        <Button variant="outline-primary" type="submit">
+        <Button
+          variant="outline-primary"
+          type="submit"
+          style={{ marginRight: "10px" }}
+        >
           Submit
+        </Button>
+
+        <Button variant="outline-secondary" onClick={navToLogin}>
+          Login
         </Button>
       </Form>
     </div>

@@ -9,7 +9,6 @@ export default function Main() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
-  // const [time, setTime] = use
   const [token, setToken] = useLocalStorage("token", "");
   const navigate = useNavigate();
 
@@ -52,7 +51,6 @@ export default function Main() {
       title: title,
       content: content,
       author: author,
-      // time: currentTime;
     };
 
     try {
@@ -62,7 +60,6 @@ export default function Main() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            //Include JWT in the Authorization header
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(obj),
@@ -70,7 +67,6 @@ export default function Main() {
       );
       const data = await response.json();
       console.log(data);
-      //update the state based on the previous state, especially in async operation
       setAllData((prevData) => {
         const updatedData = [...prevData, data];
         return updatedData.sort(
