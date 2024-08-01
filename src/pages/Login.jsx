@@ -27,7 +27,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/login",
+        "https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/login",
         {
           method: "POST",
           headers: {
@@ -42,7 +42,7 @@ export default function Login() {
         console.log(data.token);
         setToken(data.token);
         console.log(token);
-      } 
+      }
     } catch (error) {
       console.error(error.message);
     }

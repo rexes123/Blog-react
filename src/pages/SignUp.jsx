@@ -23,10 +23,11 @@ export default function SignUp() {
     const checkEmail = async () => {
       try {
         const response = await fetch(
-          "https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/signup",
+          "https://blog-api-express-js-l9by.vercel.app/signup",
         );
         const data = await response.json();
         const email = data.map((usersAccount) => usersAccount.email);
+        console.log(email);
         setExistingEmails(email);
       } catch (error) {
         console.error(error.message);
@@ -55,7 +56,7 @@ export default function SignUp() {
 
     try {
       const response = await fetch(
-        "https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/signup",
+        "https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/signup",
         {
           method: "POST",
           headers: {

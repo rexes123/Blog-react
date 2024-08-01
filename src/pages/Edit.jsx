@@ -29,7 +29,7 @@ export default function Edit() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/posts/${id}`,
+          `https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/posts/${id}`,
         );
         const data = await response.json();
         setEditItem({ ...data[0], update_at: new Date().toISOString() });
@@ -43,7 +43,7 @@ export default function Edit() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/post/${id}`,
+        `https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/post/${id}`,
         {
           method: "PUT",
           headers: {

@@ -55,7 +55,7 @@ export default function Main() {
 
     try {
       const response = await fetch(
-        "https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/post",
+        "https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/post",
         {
           method: "POST",
           headers: {
@@ -89,7 +89,7 @@ export default function Main() {
       console.log(email);
 
       const response = await fetch(
-        `https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/posts/user/${id}`,
+        `https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/posts/user/${id}`,
       );
       const data = await response.json();
       console.log(data);
@@ -107,7 +107,7 @@ export default function Main() {
 
     try {
       const response = await fetch(
-        `https://901a66ca-eef2-4109-b2e9-a7fbdf25d72b-00-37gi8kq2m7k84.sisko.replit.dev/post/${id}`,
+        `https://blog-api-expressjs-git-main-rexes123s-projects.vercel.app/post/${id}`,
         {
           method: "DELETE",
           headers: {
