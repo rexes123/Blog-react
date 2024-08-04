@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Blog-react-
 =======
 ## Running React on Replit
